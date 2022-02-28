@@ -1,25 +1,41 @@
 # MODIFY ME TO IMPLEMENT YOUR SOLUTION
 # TO PROBLEM 4: COUNT THE LONGEST SUBSEQUENCE
 #
-# NAME:         FIXME
+# NAME:         Elizabeth Ager
 # ASSIGNMENT:   Project 2: Stacks & Queues
-
 from Queue import Queue
 
 # count longest sequence of duplicates in a queue
 # can destroy the queue & make it empty
-def count_longest(q):
-    len = 0
 
-    return len
+def count_longest(queue):
+    countMax = 0
+    countCurrent = 1
+
+    while(not queue.is_empty()):
+        elementNext = queue.deq()
+        elementCurrent = queue.front()
+
+        if elementNext == elementCurrent:
+            countCurrent += 1
+        elif elementNext != elementCurrent:
+            countCurrent = 1
+        if countCurrent > countMax:
+            countMax = countCurrent
+    return countMax
 
 def main():
-    print("out 2:", count_longest( Queue( [ l for l in "hello" ] ) ))
-    print("out 5:", count_longest(Queue([l for l in "m" * 5])))
-    print("out 3:", count_longest(Queue([l for l in "heee"])))
+    print(count_longest(Queue([l for l in "weeeeeeewooooooo"])))
+    print(count_longest(Queue([l for l in "goodbye"])))
+    print(count_longest(Queue([l for l in "z" * 17])))
+    print(count_longest(Queue([l for l in "scoop"])))
+    print(count_longest(Queue([l for l in "shoooooop"])))
+    print(count_longest(Queue([l for l in "shoooopeeeeee"])))
+    print(count_longest(Queue([l for l in "shooooooopeeeeee"])))
+    print(count_longest(Queue([ ])))
+    print(count_longest(Queue([l for l in "z"])))
+    print(count_longest(Queue([l for l in "+__--___----__--_+"])))
 
 
-# Don't run main on import
 if __name__ == "__main__":
     main()
-
